@@ -1,10 +1,9 @@
+const validator = require('validator');
+
 const getNotes = require('./notes.js');
 
 const msg = getNotes();
+
 console.log(msg);
 
-// const add = require('./utils');
-//
-// const sum = add(10, 59);
-//
-// console.log(sum);
+console.log(validator.isURL('https://summitwyo.com/'));

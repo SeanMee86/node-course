@@ -1,9 +1,11 @@
-const validator = require('validator');
+const chalk = require('chalk');
 
 const getNotes = require('./notes.js');
 
 const msg = getNotes();
 
-console.log(msg);
+const log = console.log;
 
-console.log(validator.isURL('https://summitwyo.com/'));
+const successMsg = chalk.green;
+
+log(successMsg('Success!'));

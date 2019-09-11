@@ -1,4 +1,5 @@
 const request = require('request');
+const geoCode = require('./utils/geocode');
 
 // const url = 'https://api.darksky.net/forecast/1d0d2f715fdf13c5f2bacd423967bd08/37.8267,-122.4233';
 //
@@ -17,9 +18,9 @@ const request = require('request');
 //   }
 // });
 
-const geoCodeBaseUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
-const location = 'Los Angeles';
-const geoCodeUrl = `${geoCodeBaseUrl}${location}.json?access_token=pk.eyJ1Ijoic2Vhbm1lZTg2IiwiYSI6ImNrMDZ6emFvbDB4YWMzbmsxcG9wYnV5dGQifQ.3apV4HTjZbPK_MvUDEafKA&limit=1`;
+// const geoCodeBaseUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
+// const location = 'Los Angeles';
+// const geoCodeUrl = `${geoCodeBaseUrl}${location}.json?access_token=pk.eyJ1Ijoic2Vhbm1lZTg2IiwiYSI6ImNrMDZ6emFvbDB4YWMzbmsxcG9wYnV5dGQifQ.3apV4HTjZbPK_MvUDEafKA&limit=1`;
 
 // request({
 //   url: 'https://api.darksky.net/forecast/1d0d2f715fdf13c5f2bacd423967bd08/34.0544,-118.2439',
@@ -36,21 +37,26 @@ const geoCodeUrl = `${geoCodeBaseUrl}${location}.json?access_token=pk.eyJ1Ijoic2
 //   }
 // });
 
-request({
-  url: geoCodeUrl,
-  json: true
-}, (err, res) => {
+// request({
+//   url: geoCodeUrl,
+//   json: true
+// }, (err, res) => {
+//
+//   // console.log(`The Longitude of Los Angeles is ${longitude} and the Latitude is ${latitude}`);
+//
+//   if(err){
+//     console.log('could not connect to weather service');
+//   }else if(!res.body.features.length){
+//     console.log('sorry no matches were found for that search');
+//   }else{
+//     const latLong = res.body.features[0].center;
+//     const latitude = latLong[1];
+//     const longitude = latLong[0];
+//     console.log(`${latitude}, ${longitude}`);
+//   }
+// });
 
-  // console.log(`The Longitude of Los Angeles is ${longitude} and the Latitude is ${latitude}`);
-
-  if(err){
-    console.log('could not connect to weather service');
-  }else if(!res.body.features.length){
-    console.log('sorry no matches were found for that search');
-  }else{
-    const latLong = res.body.features[0].center;
-    const latitude = latLong[1];
-    const longitude = latLong[0];
-    console.log(`${latitude}, ${longitude}`);
-  }
+geoCode('Seattle', (error, data) => {
+  console.log('Error: ', error);
+  console.log('Data: ', data);
 });

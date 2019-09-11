@@ -40,9 +40,6 @@ request({
   url: geoCodeUrl,
   json: true
 }, (err, res) => {
-
-  // console.log(`The Longitude of Los Angeles is ${longitude} and the Latitude is ${latitude}`);
-
   if(err){
     console.log('could not connect to weather service');
   }else if(!res.body.features.length){

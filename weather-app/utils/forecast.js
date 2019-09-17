@@ -12,8 +12,7 @@ const forecast = (latitude, longitude , callback) => {
             callback('sorry, no results found', undefined);
         }else {
             const currentWeather = res.body.currently;
-            callback(undefined, `${res.body.daily.data[0].summary} It is currently ${currentWeather.temperature} degrees farenheit out and there is a
-      ${currentWeather.precipProbability}% chance of precipitation`);
+            callback(undefined, `${res.body.daily.data[0].summary} It is currently ${currentWeather.temperature} degrees farenheit out and there is a ${currentWeather.precipProbability}% chance of precipitation`);
         }
     })
 };

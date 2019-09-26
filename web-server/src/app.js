@@ -1,21 +1,16 @@
+const path = require('path');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
+const publicDirectoryPath = path.join(__dirname, '../public');
 
-app.get('/', (req,res) => {
-    res.send('<h1>Hello Express</h1>')
-});
-
-app.get('/help', (req, res) => {
-    res.send('<h1>Help Page</h1>')
-});
-
-app.get('/about', (req, res) => {
-    res.send('<h1>About Page</h1>')
-});
+app.use(express.static(publicDirectoryPath));
 
 app.get('/weather', (req, res) => {
-    res.send('<h1>Weather Page</h1>')
+    res.send({
+        location: 'Huntington Beach',
+        forecase: 'Clear'
+    })
 });
 
 app.listen(port, () => {
